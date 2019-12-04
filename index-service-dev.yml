@@ -4,6 +4,11 @@ spring:
     virtual-host: /zs
     username: zs
     password: 123
+  zipkin:
+    base-url: http://localhost:8868
+  sleuth:
+    sampler:
+      probability: 1.0
 
 #配置调用product-service服务采用的负载均衡策略
 PRODUCT-SERVICE:
@@ -34,3 +39,10 @@ hystrix:
         requestVolumeThreshold: 5 #触发熔断的最小请求次数，默认20
         errorThresholdPercentage: 10 #触发熔断的失败请求最小占比，默认50%
         sleepWindowInMilliseconds: 20000 #熔断多少秒后去尝试请求，默认是5S 
+
+#跟踪链路服务
+logging:
+  level:
+    root: info
+    org.springframework.web.servlet.DispatcherServlet: DEBUG
+    org.springframework.cloud.sleuth: DEBUG
