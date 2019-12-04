@@ -6,6 +6,8 @@ spring:
     password: 123
   zipkin:
     base-url: http://localhost:8868
+    sender:
+      type: web
   sleuth:
     sampler:
       probability: 1.0
